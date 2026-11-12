@@ -55,7 +55,7 @@ The goal is to build a beautiful, data-driven electricity atlas with an interact
 | MapLibre GL JS | Interactive maps |
 | deck.gl | Advanced geospatial visualization (planned) |
 | Lucide React | Icons |
-| Recharts | Data visualization |
+| Recharts | Data visualization (planned) |
 | Python / FastAPI | Backend (planned) |
 | PostgreSQL / PostGIS | Geospatial database (planned) |
 
@@ -105,21 +105,34 @@ npm run build
 npm run preview
 ```
 
+### Configuration
+
+The basemap defaults to the free, key-less [OpenFreeMap](https://openfreemap.org/) "dark" style. To use another MapLibre style, copy `.env.example` to `.env.local` and set `VITE_MAP_STYLE_URL`.
+
 ## 📁 Project Structure
 
 ```text
 PowerMap/
 ├── public/
+│   └── favicon.svg
 ├── src/
-│   ├── assets/
 │   ├── components/
-│   │   ├── Header.tsx
+│   │   ├── About.tsx
 │   │   ├── Footer.tsx
-│   │   └── MapView.tsx
+│   │   ├── GithubIcon.tsx
+│   │   ├── Header.tsx
+│   │   ├── MapSection.tsx   # lazy-loads the map when it nears the viewport
+│   │   ├── MapView.tsx      # MapLibre map + power plant layer
+│   │   └── Statistics.tsx
+│   ├── config/
+│   │   └── site.ts          # nav links, external URLs, map style & bounds
+│   ├── data/
+│   │   └── powerPlants.ts   # sample GeoJSON dataset (pending verification)
 │   ├── App.tsx
-│   ├── App.css
 │   ├── index.css
-│   └── main.tsx
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── .env.example
 ├── index.html
 ├── package.json
 ├── tsconfig.json
@@ -147,13 +160,15 @@ Data will be checked for accuracy, attribution requirements, and availability be
 - [x] Set up Tailwind CSS
 - [x] Create initial application layout
 - [x] Build reusable header and footer
-- [ ] Integrate MapLibre GL JS
-- [ ] Display an interactive map of Nepal
-- [ ] Add hydropower plant locations
+- [x] Integrate MapLibre GL JS
+- [x] Display an interactive map of Nepal
+- [x] Add hydropower plant locations (sample dataset)
+- [ ] Verify plant locations and capacities against NEA / DoED / OSM
 - [ ] Visualize transmission lines
 - [ ] Add substations
 - [ ] Build infrastructure information panels
-- [ ] Add energy statistics and charts
+- [x] Add basic statistics from the mapped dataset
+- [ ] Add national energy statistics and charts
 - [ ] Develop backend API
 - [ ] Integrate a geospatial database
 - [ ] Improve performance and mobile experience

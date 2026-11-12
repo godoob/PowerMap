@@ -2,12 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>powermap</title>
+    <title>PowerMap Nepal — Interactive Atlas of Nepal's Electricity Infrastructure</title>
+    <meta
+      name="description"
+      content="Explore Nepal's power grid through an interactive map of hydropower plants, transmission lines, substations and energy infrastructure."
+    />
+    <meta name="theme-color" content="#080e19" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PowerMap Nepal" />
+    <meta
+      property="og:description"
+      content="An interactive atlas of Nepal's electricity infrastructure."
+    />
+
+    <!-- Warm up the basemap tile host so the map paints sooner. -->
+    <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
   </head>
   <body>
     <div id="root"></div>
+    <noscript>PowerMap Nepal needs JavaScript enabled to show the interactive map.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
